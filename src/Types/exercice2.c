@@ -1,13 +1,12 @@
 #include <stdio.h>
-
 int main(int argc)
 {
-    int x0, x1;
+    char x0, x1;
     x0 = 0;
     x1 = 0;
     printf("x0 est en %p, et x1 en %p \n", &x0, &x1);
     printf("difference : %ld \n", &x1-&x0);
-    int x2 = 0;
+    char x2 = 0;
     printf("difference &x2-&x0 : %ld \n", &x2-&x0);
     printf("difference &x1-&x0 : %ld \n", &x1-&x0);
     printf("difference &x2-&x1 : %ld \n", &x2-&x1);
