@@ -2,13 +2,14 @@
 
 int main(int argc, char *argv[])
 {
-    char c;
-    scanf("Bonjour!");
+    char c, *res;
+    scanf("Bonjour, je suis XXX");
     c = getchar();
     while(c != '\n')
     {
-        printf("%c \n", c);
+        res = res + c;
         c = getchar();
     }
+    printf("%s \n", res);
     return 0;
 }
