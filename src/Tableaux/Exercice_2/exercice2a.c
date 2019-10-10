@@ -1,8 +1,9 @@
+//NOUVEL ESSAI BCP PLUS LOGIQUE
 #include <stdio.h>
 #include <math.h>
 #define TAILLE 100000
 
-void decomposition(int *t, int size)
+void impression_tableau(int *t, int size)
 {
     for(int i = size; i >= 0; i--)
     {
@@ -12,15 +13,16 @@ void decomposition(int *t, int size)
 }
 
 
-int crible(int *t)
+int crible_utile(int *t)
 {
     int i;
-    i = 1;
+    i = 2;
     while(i <= TAILLE)
     {
         t[i] = 1;
         i++;
     }
+
     for(int step = 2; step <= sqrt(TAILLE); step++)
     {
         if(t[step] == 1)
@@ -29,7 +31,6 @@ int crible(int *t)
             {
                 t[step*step2] = step;
             }
-            t[step] = step;
         }
     }
 }
@@ -39,7 +40,7 @@ int crible(int *t)
 int main(void)
 {
     int t[TAILLE], entree;
-    crible(t);
+    crible_utile(t);
     while(1 < 2)
     {
         scanf("%d", &entree);
@@ -59,7 +60,7 @@ int main(void)
             }
             else
             {
-                printf("%d n'est pas un nombre premier \n", entree);
+                printf("%d n'est pas un nombre premier et son pgdp est %d \n", entree, t[entree]);
             }
         }
     }
