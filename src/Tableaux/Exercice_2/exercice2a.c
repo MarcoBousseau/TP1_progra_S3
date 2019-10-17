@@ -41,6 +41,7 @@ int main(void)
 {
     int t[TAILLE], entree;
     crible_utile(t);
+    impression_tableau(t, TAILLE);
     while(1 < 2)
     {
         scanf("%d", &entree);
