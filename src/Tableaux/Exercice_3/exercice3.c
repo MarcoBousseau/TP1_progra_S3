@@ -1,56 +1,53 @@
+#include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include <stdio.h>
 
-//                                                                                  !!! NE MARCHE PAS !!!
-
-void trouve_candidat(int *t, int *candidat){
-    int i=0, majorite=0, cand;
-    cand = t[i];
-    i++;
-    do{
+int trouve_candidat(int * t, int *philippe){
+    int majorite = 0, candidat_interne;
+    for(int j = 0; j<10; j++){
         if(majorite == 0){
-            cand = t[i+1];
+            candidat_interne = t[j];
             majorite++;
-        }
-        if (cand==t[i]){
-            majorite++;
-            i++;
         }
         else{
-            majorite--;
-            i++;
+            if (candidat_interne == t[j]){
+                majorite++;
+            }
+            else{
+                majorite--;
+            }
         }
-        //printf("%d \n", i);
-    }while(i<10);
-    int parcours2 = 0, apparait = 0;
-    while(parcours2 < 10){
-        if(t[parcours2] == cand){
+    }
+    printf("candidat fin boucle 1 : %d \n", candidat_interne);
+    int apparait = 0;
+    for(int h = 0; h<10; h++){
+        if(candidat_interne == t[h]){
             apparait++;
         }
-        printf("indice : %d\n", parcours2);
-        printf("nombre d'apparition : %d\n", apparait);        
-        parcours2 ++;
     }
-    printf("ligne 33");
-    if(apparait > 10/2){
-        *candidat = cand;
+    printf("apparait : %d\n", apparait);
+    if(apparait>5){
+        *philippe = candidat_interne;
     }
     else{
-        *candidat = -1;
-        return;
+        *philippe = -1;
     }
 }
 
-int main(void){
-    int n, *candidat_final;
+//la fonction verifie_candidat est contenue dans trouve_candidat
+
+int main(){
+    int n, t[10], candidat;
+    int *ad_candidat;
+    ad_candidat = &candidat;
     srand(time(NULL));
     scanf("%d", &n);
-    int t[10];
-    for(int i = 0; i<=9; i++){
-        t[i]=rand()%(n);
-        //printf("%d\n", t[i]);
+    printf("t = [");
+    for(int i=0; i<10; i++){
+        t[i] = rand()%n;
+        printf(" %d ", t[i]);
     }
-    trouve_candidat(t, candidat_final);
-    printf("candidat : %d \n", *(candidat_final));
+    printf("]\n");
+    trouve_candidat(t, ad_candidat);
+    printf("candidat : %d \n", candidat);
 }
